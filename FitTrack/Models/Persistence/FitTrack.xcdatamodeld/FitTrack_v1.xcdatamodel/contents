@@ -1,0 +1,367 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17861" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="1">
+    <entity name="ExerciseEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="catalogID" optional="YES" attributeType="String" usesScalarValueType="NO" />
+        <attribute name="nameES" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="nameEN" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="techniqueES" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="techniqueEN" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="primaryMuscleCode" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="core" />
+        <attribute name="secondaryMuscleCodesData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="equipmentCodesData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="primaryEquipmentCode" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="bodyweight" />
+        <attribute name="typeCodesData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="primaryTypeCode" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="strength" />
+        <attribute name="levelCode" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="beginner" />
+        <attribute name="movementPatternCode" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="other" />
+        <attribute name="videoURL" optional="YES" attributeType="String" usesScalarValueType="NO" />
+        <attribute name="iconKey" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="exercise" />
+        <attribute name="tipsESData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="tipsENData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="mistakesESData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="mistakesENData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="variantsData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="progressionsData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="regressionsData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="isFavorite" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO" />
+        <attribute name="isCustom" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO" />
+        <attribute name="isHidden" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO" />
+        <relationship name="routineEntries" optional="YES" deletionRule="Nullify" destinationEntity="RoutineExerciseEntity" inverseName="exercise" inverseEntity="RoutineExerciseEntity" toMany="YES" />
+        <relationship name="sessionEntries" optional="YES" deletionRule="Nullify" destinationEntity="SessionExerciseEntity" inverseName="exercise" inverseEntity="SessionExerciseEntity" toMany="YES" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="RoutineEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="catalogID" optional="YES" attributeType="String" usesScalarValueType="NO" />
+        <attribute name="name" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="summary" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="goalCode" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="hypertrophy" />
+        <attribute name="levelCode" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="beginner" />
+        <attribute name="estimatedMinutes" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="daysPerWeek" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="tagsData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="progressionRulesData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="isArchived" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO" />
+        <attribute name="isTemplate" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO" />
+        <relationship name="days" optional="YES" deletionRule="Cascade" destinationEntity="RoutineDayEntity" inverseName="routine" inverseEntity="RoutineDayEntity" toMany="YES" />
+        <relationship name="sessions" optional="YES" deletionRule="Nullify" destinationEntity="WorkoutSessionEntity" inverseName="routine" inverseEntity="WorkoutSessionEntity" toMany="YES" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="RoutineDayEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="name" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="position" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="notes" optional="YES" attributeType="String" usesScalarValueType="NO" />
+        <relationship name="routine" optional="NO" maxCount="1" deletionRule="Nullify" destinationEntity="RoutineEntity" inverseName="days" inverseEntity="RoutineEntity" />
+        <relationship name="exercises" optional="YES" deletionRule="Cascade" destinationEntity="RoutineExerciseEntity" inverseName="day" inverseEntity="RoutineExerciseEntity" toMany="YES" />
+        <relationship name="groups" optional="YES" deletionRule="Cascade" destinationEntity="TrainingGroupEntity" inverseName="day" inverseEntity="TrainingGroupEntity" toMany="YES" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="RoutineExerciseEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="position" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="nameESSnapshot" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="nameENSnapshot" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="notes" optional="YES" attributeType="String" usesScalarValueType="NO" />
+        <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExerciseEntity" inverseName="routineEntries" inverseEntity="ExerciseEntity" />
+        <relationship name="day" optional="NO" maxCount="1" deletionRule="Nullify" destinationEntity="RoutineDayEntity" inverseName="exercises" inverseEntity="RoutineDayEntity" />
+        <relationship name="prescriptions" optional="YES" deletionRule="Cascade" destinationEntity="SetPrescriptionEntity" inverseName="routineExercise" inverseEntity="SetPrescriptionEntity" toMany="YES" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="SetPrescriptionEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="position" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="repsMinimum" optional="YES" attributeType="Integer 32" usesScalarValueType="NO" />
+        <attribute name="repsMaximum" optional="YES" attributeType="Integer 32" usesScalarValueType="NO" />
+        <attribute name="loadKg" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="durationSeconds" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="distanceMeters" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="targetRPE" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="targetRIR" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="tempo" optional="YES" attributeType="String" usesScalarValueType="NO" />
+        <attribute name="restSeconds" optional="NO" attributeType="Double" usesScalarValueType="YES" defaultValueString="90" />
+        <attribute name="setKindCode" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="normal" />
+        <attribute name="isToFailure" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO" />
+        <attribute name="dropGroupID" optional="YES" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="dropStageIndex" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="groupMemberOrder" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="0" />
+        <relationship name="routineExercise" optional="NO" maxCount="1" deletionRule="Nullify" destinationEntity="RoutineExerciseEntity" inverseName="prescriptions" inverseEntity="RoutineExerciseEntity" />
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrainingGroupEntity" inverseName="prescriptions" inverseEntity="TrainingGroupEntity" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="TrainingGroupEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="typeCode" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="superset" />
+        <attribute name="position" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="roundCount" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="1" />
+        <attribute name="workSeconds" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="restSeconds" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="timeLimitSeconds" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="notes" optional="YES" attributeType="String" usesScalarValueType="NO" />
+        <relationship name="day" optional="NO" maxCount="1" deletionRule="Nullify" destinationEntity="RoutineDayEntity" inverseName="groups" inverseEntity="RoutineDayEntity" />
+        <relationship name="prescriptions" optional="YES" deletionRule="Nullify" destinationEntity="SetPrescriptionEntity" inverseName="group" inverseEntity="SetPrescriptionEntity" toMany="YES" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="WorkoutSessionEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="startedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="endedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="activeSeconds" optional="NO" attributeType="Double" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="pausedSeconds" optional="NO" attributeType="Double" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="stateCode" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="running" />
+        <attribute name="routineNameSnapshot" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="goalCodeSnapshot" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="general" />
+        <attribute name="dayNameSnapshot" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="timeZoneIdentifier" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="UTC" />
+        <attribute name="notes" optional="YES" attributeType="String" usesScalarValueType="NO" />
+        <relationship name="routine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RoutineEntity" inverseName="sessions" inverseEntity="RoutineEntity" />
+        <relationship name="exercises" optional="YES" deletionRule="Cascade" destinationEntity="SessionExerciseEntity" inverseName="session" inverseEntity="SessionExerciseEntity" toMany="YES" />
+        <relationship name="pauses" optional="YES" deletionRule="Cascade" destinationEntity="SessionPauseEntity" inverseName="session" inverseEntity="SessionPauseEntity" toMany="YES" />
+        <relationship name="activeState" optional="YES" deletionRule="Cascade" destinationEntity="ActiveWorkoutStateEntity" inverseName="session" inverseEntity="ActiveWorkoutStateEntity" maxCount="1" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="SessionExerciseEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="position" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="nameESSnapshot" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="nameENSnapshot" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="primaryMuscleCodeSnapshot" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="core" />
+        <attribute name="secondaryMuscleCodesSnapshotData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="equipmentCodesSnapshotData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="typeCodeSnapshot" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="strength" />
+        <attribute name="exerciseIDSnapshot" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExerciseEntity" inverseName="sessionEntries" inverseEntity="ExerciseEntity" />
+        <relationship name="session" optional="NO" maxCount="1" deletionRule="Nullify" destinationEntity="WorkoutSessionEntity" inverseName="exercises" inverseEntity="WorkoutSessionEntity" />
+        <relationship name="sets" optional="YES" deletionRule="Cascade" destinationEntity="WorkoutSetEntity" inverseName="sessionExercise" inverseEntity="WorkoutSetEntity" toMany="YES" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="WorkoutSetEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="prescriptionIDSnapshot" optional="YES" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="position" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="loadKg" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="reps" optional="YES" attributeType="Integer 32" usesScalarValueType="NO" />
+        <attribute name="durationSeconds" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="distanceMeters" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="loadTypeCode" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="external" />
+        <attribute name="isCompleted" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO" />
+        <attribute name="isSkipped" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO" />
+        <attribute name="completedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="rpe" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="rir" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="notes" optional="YES" attributeType="String" usesScalarValueType="NO" />
+        <attribute name="tempo" optional="YES" attributeType="String" usesScalarValueType="NO" />
+        <attribute name="prescriptionSnapshotData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="dropGroupID" optional="YES" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="dropStageIndex" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="0" />
+        <relationship name="sessionExercise" optional="NO" maxCount="1" deletionRule="Nullify" destinationEntity="SessionExerciseEntity" inverseName="sets" inverseEntity="SessionExerciseEntity" />
+        <relationship name="records" optional="YES" deletionRule="Cascade" destinationEntity="PersonalRecordEntity" inverseName="sourceSet" inverseEntity="PersonalRecordEntity" toMany="YES" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="SessionPauseEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="startedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="endedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" />
+        <relationship name="session" optional="NO" maxCount="1" deletionRule="Nullify" destinationEntity="WorkoutSessionEntity" inverseName="pauses" inverseEntity="WorkoutSessionEntity" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="ActiveWorkoutStateEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="slotKey" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="active" />
+        <attribute name="currentExerciseIndex" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="currentSetIndex" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="stateBeforePauseCode" optional="YES" attributeType="String" usesScalarValueType="NO" />
+        <attribute name="intervalStartedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="restRemainingSeconds" optional="NO" attributeType="Double" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="restDeadline" optional="YES" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="intervalTimerSnapshotData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="lastSavedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <relationship name="session" optional="NO" maxCount="1" deletionRule="Nullify" destinationEntity="WorkoutSessionEntity" inverseName="activeState" inverseEntity="WorkoutSessionEntity" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+            <uniquenessConstraint>
+                <constraint value="slotKey" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="PersonalRecordEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="exerciseID" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="metricCode" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="max_weight" />
+        <attribute name="value" optional="NO" attributeType="Double" usesScalarValueType="YES" defaultValueString="0" />
+        <attribute name="previousValue" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="achievedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <relationship name="sourceSet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkoutSetEntity" inverseName="records" inverseEntity="WorkoutSetEntity" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="BodyMeasurementEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="measuredAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="weightKg" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="heightCm" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="bodyFatPercent" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="chestCm" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="waistCm" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="hipCm" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="armLeftCm" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="armRightCm" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="thighLeftCm" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="thighRightCm" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="calfLeftCm" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="calfRightCm" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="neckCm" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="notes" optional="YES" attributeType="String" usesScalarValueType="NO" />
+        <relationship name="photos" optional="YES" deletionRule="Cascade" destinationEntity="PhotoAttachmentEntity" inverseName="measurement" inverseEntity="PhotoAttachmentEntity" toMany="YES" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="PhotoAttachmentEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="relativeFilename" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="contentType" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="public.jpeg" />
+        <attribute name="capturedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" />
+        <relationship name="measurement" optional="NO" maxCount="1" deletionRule="Nullify" destinationEntity="BodyMeasurementEntity" inverseName="photos" inverseEntity="BodyMeasurementEntity" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="ProfileEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="scopeKey" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="local" />
+        <attribute name="displayName" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="birthDate" optional="YES" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="heightCm" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="metabolicFormulaSexCode" optional="YES" attributeType="String" usesScalarValueType="NO" />
+        <attribute name="activityFactor" optional="NO" attributeType="Double" usesScalarValueType="YES" defaultValueString="1.2" />
+        <attribute name="goalCode" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="maintenance" />
+        <attribute name="targetWeightKg" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="targetBodyFatPercent" optional="YES" attributeType="Double" usesScalarValueType="NO" />
+        <attribute name="goalsData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <attribute name="preferencesData" optional="YES" attributeType="Binary" usesScalarValueType="NO" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+            <uniquenessConstraint>
+                <constraint value="scopeKey" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="CatalogMetadataEntity" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO" />
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <attribute name="catalogID" optional="NO" attributeType="String" usesScalarValueType="NO" defaultValueString="" />
+        <attribute name="schemaVersion" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="1" />
+        <attribute name="contentVersion" optional="NO" attributeType="Integer 32" usesScalarValueType="YES" defaultValueString="1" />
+        <attribute name="importedAt" optional="NO" attributeType="Date" usesScalarValueType="NO" />
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id" />
+            </uniquenessConstraint>
+            <uniquenessConstraint>
+                <constraint value="catalogID" />
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="ExerciseEntity" positionX="0" positionY="0" width="270" height="585" />
+        <element name="RoutineEntity" positionX="320" positionY="0" width="270" height="333" />
+        <element name="RoutineDayEntity" positionX="640" positionY="0" width="270" height="207" />
+        <element name="RoutineExerciseEntity" positionX="960" positionY="0" width="270" height="225" />
+        <element name="SetPrescriptionEntity" positionX="0" positionY="660" width="270" height="405" />
+        <element name="TrainingGroupEntity" positionX="320" positionY="660" width="270" height="261" />
+        <element name="WorkoutSessionEntity" positionX="640" positionY="660" width="270" height="351" />
+        <element name="SessionExerciseEntity" positionX="960" positionY="660" width="270" height="297" />
+        <element name="WorkoutSetEntity" positionX="0" positionY="1320" width="270" height="441" />
+        <element name="SessionPauseEntity" positionX="320" positionY="1320" width="270" height="153" />
+        <element name="ActiveWorkoutStateEntity" positionX="640" positionY="1320" width="270" height="279" />
+        <element name="PersonalRecordEntity" positionX="960" positionY="1320" width="270" height="207" />
+        <element name="BodyMeasurementEntity" positionX="0" positionY="1980" width="270" height="387" />
+        <element name="PhotoAttachmentEntity" positionX="320" positionY="1980" width="270" height="171" />
+        <element name="ProfileEntity" positionX="640" positionY="1980" width="270" height="297" />
+        <element name="CatalogMetadataEntity" positionX="960" positionY="1980" width="270" height="171" />
+    </elements>
+</model>
