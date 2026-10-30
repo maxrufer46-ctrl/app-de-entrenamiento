@@ -1,10 +1,10 @@
 # Plan de implementación por fases
 
-**Estado:** solo la fase 0 está entregada. Las fases 1–11 están pendientes. Cada fase añadirá código completo de sus archivos, instrucciones ejecutables, checklist y riesgos observados. No se declarará terminado un módulo porque exista su carpeta.
+**Estado:** fase 0 entregada; [fase 1](FASE_1.md) implementada en código, con aceptación nativa pendiente en Catalina/Xcode 12.4. Las fases 2–11 siguen pendientes. Cada fase incluye código completo de sus archivos, instrucciones, checklist y riesgos observados. No se declara terminado un módulo porque exista su carpeta.
 
 ## Entregables y verificación
 
-Todas las rutas son relativas a `FitTrack/`. `build` y `test` se refieren a los comandos de [QA](QA.md), desde un Mac con Xcode 12.4. Esos comandos no son ejecutables hasta que exista el proyecto de fase 1.
+Todas las rutas son relativas a `FitTrack/`. `build` y `test` se refieren a los comandos de [QA](QA.md), desde un Mac con Xcode 12.4. El proyecto existe desde la fase 1; sus builds y tests nativos aún deben ejecutarse.
 
 | Fase | Archivos que se crearán o modificarán | Verificación y comandos | Riesgo a resolver |
 | --- | --- | --- | --- |

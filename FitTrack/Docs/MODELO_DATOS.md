@@ -1,6 +1,8 @@
-# Modelo de datos propuesto
+# Modelo de datos
 
-Contrato de fase 0. El modelo Core Data v1 se implementa en fase 1 y sus tipos/repositorios en fase 2. Todas las entidades persistidas tendrán `id: UUID`, `createdAt: Date` y `updatedAt: Date`; se documentarán las excepciones de snapshots inmutables.
+Contrato definido en fase 0 e incorporado al modelo Core Data v1 en fase 1. El esquema concreto está en `Models/Persistence/FitTrack.xcdatamodeld/FitTrack_v1.xcdatamodel/contents`; sus tipos/repositorios de entrenamiento se implementan en fase 2. Todas las entidades persistidas tienen `id: UUID`, `createdAt: Date` y `updatedAt: Date`.
+
+La fase 1 implementa el repositorio de perfil y añade las claves únicas `scopeKey` y `slotKey` a perfil/estado activo. La apertura y los invariantes nativos aún requieren ejecutar las pruebas en Mac. Una vez usado como versión publicada, v1 debe conservarse: los cambios de esquema posteriores se harán en una nueva versión del modelo y con pruebas de migración.
 
 ## Entidades
 

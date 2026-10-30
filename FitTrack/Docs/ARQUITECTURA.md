@@ -1,5 +1,7 @@
 # Arquitectura
 
+Arquitectura objetivo definida en fase 0. La fase 1 implementa arranque, composición, stack, perfil y pantalla inicial; los servicios de entrenamiento, catálogos, onboarding y navegación completa descritos aquí se incorporan en las fases posteriores del [plan](PLAN_DE_FASES.md).
+
 ## Capas y dependencias
 
 MVVM con servicios de aplicación y repositorios por protocolo. La presentación no consulta Core Data ni calcula métricas de entrenamiento.

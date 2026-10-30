@@ -2,9 +2,9 @@
 
 ## Estado actual
 
-Fase 0: documentación y estructura. No hay código Swift ni proyecto Xcode que compilar. Cobertura: **no medida**. Pruebas unitarias/UI: **todavía no implementadas**. La preparación se realiza en Linux, donde no están disponibles AppKit, SwiftUI macOS ni `xcodebuild`.
+Fase 1: proyecto Xcode y código de arranque/persistencia/perfil implementados. Hay **34 métodos XCTest preparados**, todavía sin ejecutar. Cobertura: **no medida**. La preparación se realiza en Linux, donde no están disponibles AppKit, SwiftUI macOS ni `xcodebuild`.
 
-La validación de esta fase revisa rutas, enlaces, separación de fases y cambios limitados a `FitTrack/`. Los comandos siguientes son el procedimiento de aceptación futuro, no resultados ya obtenidos.
+Se han validado estáticamente proyecto, referencias, modelo XML/plists, localización y sintaxis de scripts, además de una revisión gramatical de Swift. El detalle y sus límites están en [Fase 1](FASE_1.md). Los comandos siguientes son el procedimiento de aceptación nativa pendiente, no resultados ya obtenidos.
 
 ## Matriz de pruebas
 
@@ -21,7 +21,7 @@ La validación de esta fase revisa rutas, enlaces, separación de fases y cambio
 | Accesibilidad | VoiceOver, orden de foco, contraste, resize y alternativas de gráficos | Acciones y datos accesibles sin depender del color o del ratón. |
 | Compatibilidad | Debug/Release con Xcode 12.4 y runtime real 10.15 | Sin errores ni warnings; no se acepta solo compilar en un Mac moderno. |
 
-## Comandos en Mac, desde fase 1
+## Comandos en Mac
 
 Desde `app-de-entrenamiento/FitTrack`, con Xcode 12.4 instalado en la ruta indicada:
 
@@ -31,13 +31,12 @@ sw_vers
 xcodebuild -version
 xcrun swift --version
 xcodebuild -list -project FitTrack.xcodeproj
-xcodebuild -project FitTrack.xcodeproj -scheme FitTrack -configuration Debug -destination 'platform=macOS' -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO build
-xcodebuild -project FitTrack.xcodeproj -scheme FitTrack -configuration Release -destination 'platform=macOS' -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO build
-xcodebuild -project FitTrack.xcodeproj -scheme FitTrack -configuration Debug -destination 'platform=macOS' -derivedDataPath DerivedData -enableCodeCoverage YES -resultBundlePath TestResults/FitTrack.xcresult test
-xcrun xccov view --report --json TestResults/FitTrack.xcresult
+bash Scripts/verify-macos.sh
 ```
 
-Crear previamente `TestResults/` y usar un nombre nuevo de `.xcresult` en cada ejecución; Xcode no sobrescribe un result bundle existente. Si Xcode tiene otro nombre, ajustar únicamente `DEVELOPER_DIR`. Los build sin firma comprueban compilación; no certifican firma, ejecución bajo sandbox ni notarización.
+El script crea una carpeta nueva bajo `TestResults/` por ejecución; Xcode no sobrescribe un result bundle existente. Si Xcode tiene otro nombre, ajustar `DEVELOPER_DIR`. Se usa la firma local ad hoc del proyecto, sin equipo personal incrustado. La notarización y firma de distribución se comprobarán por separado.
+
+Para revisar sin Xcode: `python3 Scripts/validate_project.py`. Este validador no comprueba tipos Swift ni toda la disponibilidad de APIs, y no ejecuta los tests. La verificación nativa exige `momc`, SDK de macOS y una sesión gráfica para las pruebas UI.
 
 El esquema compartido incluirá targets de app, unit/integration y UI con cobertura de app. Se archivará el reporte real y se calculará por separado la cobertura de líneas ejecutables de `Models/` y `ViewModels/`: suma de líneas cubiertas / suma de líneas ejecutables en cada grupo. El objetivo ≥60% se exige a ambos grupos, sin inflar la cifra con archivos generados. El parser se verificará contra la salida de `xccov` de Xcode 12.4.
 

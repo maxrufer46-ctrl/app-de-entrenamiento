@@ -14,6 +14,8 @@ xcuserdata/
 *.storedata*
 LocalData/
 Exports/
+__pycache__/
+*.py[cod]
 
 # Certificados y configuración privada
 *.p12
