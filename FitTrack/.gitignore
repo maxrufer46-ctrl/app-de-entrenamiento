@@ -1,0 +1,22 @@
+# Archivos generados dentro de FitTrack
+.DS_Store
+DerivedData/
+build/
+TestResults/
+*.xcresult
+*.xcuserstate
+xcuserdata/
+
+# Almacenamiento y exportaciones locales de desarrollo
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.storedata*
+LocalData/
+Exports/
+
+# Certificados y configuración privada
+*.p12
+*.mobileprovision
+.env
+.env.*
